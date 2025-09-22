@@ -27,10 +27,34 @@ public class PilhasColoridas {
             resize(capacidade * 2);
         }
         topoPreto--;                                // "aumenta" o topo
-        dados[topoPreto] = valor;                // coloca o valor no array
+        dados[topoPreto] = valor;                   // coloca o valor no array
     }
 
+    public int popVermelho() {
+        if (topoVermelho == -1) {
+            throw new PilhaVaziaExcecao("A Pilha está vazia.");
+        }
+        valor = dados[topoVermelho];
+        topoVermelho--;                             // Vai retornar o valor que ESTAVA no topo, mas agora foi retirado
+        return valor;                               // por isso o "valor = dados" veio antes do topoVermelho--;
+    }
+
+    public int popPreto() {
+        if (topoPreto == capacidade) {
+            throw new PilhaVaziaExcecao("A Pilha está vazia.");
+        }
+        valor = dados[topoVermelho];
+        topoPreto++;                                // Vai retornar o valor que ESTAVA no topo, mas agora foi retirado
+        return valor;                               // por isso o "valor = dados" veio antes do topoPreto--;
+    }
+   
+
     private void resize(int novaCapacidade) {
-        System.out.println(">> resize chamado com capacidade" + novaCapacidade);
+        int[] novo = new int[novaCapacidade];
+        for (int i=0; i <= topoVermelho; i++) {     // laço pra copiar a Pilha vermelha pro novo Array 
+            novo[i] = dados[i];
+        }
+        int elementosPretos = capacidade - topoPreto; // quantos elementos pretos tem na pilha preta
+        int novoTopoPreto = novaCapacidade - elementosPretos;
     }
 }

@@ -5,7 +5,8 @@ public class TestePilhas{
         PilhasColoridas pilhas = new PilhasColoridas(5);
         pilhas.pushVermelho(10);
         pilhas.pushVermelho(20);
-        pilhas.pushVermelho(30);
-        System.out.println("Push vermelho funcionando!");
+        pilhas.pushPreto(99);
+        pilhas.pushPreto(88);
+        System.out.println("Push vermelho e Preto funcionando!");
     }
 }

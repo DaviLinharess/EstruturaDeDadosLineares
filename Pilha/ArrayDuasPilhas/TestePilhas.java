@@ -9,9 +9,10 @@ public class TestePilhas {
             pilhas.pushVermelho(i);
             System.out.println("pushVermelho(" + i + ")");
         }
-        for (int i = 0; i < 8; i++) {
-            int valor = pilhas.popVermelho();
-            System.out.println("popVermelho() -> " + valor);
+
+        System.out.println("\nPop Vermelho:");
+        while (!pilhas.isEmptyVermelho()) {
+            System.out.println("popVermelho() -> " + pilhas.popVermelho());
         }
 
         System.out.println("\n==== Teste 2: Crescimento Preto ====");
@@ -19,21 +20,31 @@ public class TestePilhas {
             pilhas.pushPreto(i);
             System.out.println("pushPreto(" + i + ")");
         }
-        for (int i = 0; i < 8; i++) {
-            int valor = pilhas.popPreto();
-            System.out.println("popPreto() -> " + valor);
+
+        System.out.println("\nPop Preto:");
+        while (!pilhas.isEmptyPreto()) {
+            System.out.println("popPreto() -> " + pilhas.popPreto());
         }
 
         System.out.println("\n==== Teste 3: Pilhas Juntas ====");
-        pilhas.pushVermelho(1);
-        pilhas.pushVermelho(2);
-        pilhas.pushVermelho(3);
+        for (int i = 1; i <= 5; i++) {
+            pilhas.pushVermelho(i);
+            pilhas.pushPreto(100 + i);
+        }
 
-        pilhas.pushPreto(99);
-        pilhas.pushPreto(88);
-        pilhas.pushPreto(77);
+        System.out.println("Topo vermelho: " + pilhas.topVermelho());
+        System.out.println("Topo preto: " + pilhas.topPreto());
+        System.out.println("Tamanho vermelho: " + pilhas.sizeVermelho());
+        System.out.println("Tamanho preto: " + pilhas.sizePreto());
 
-        System.out.println("popVermelho() -> " + pilhas.popVermelho()); // deve sair 3
-        System.out.println("popPreto() -> " + pilhas.popPreto());       // deve sair 77
+        System.out.println("\nEsvaziando as duas pilhas...");
+        while (!pilhas.isEmptyVermelho() || !pilhas.isEmptyPreto()) {
+            if (!pilhas.isEmptyVermelho()) {
+                System.out.println("popVermelho() -> " + pilhas.popVermelho());
+            }
+            if (!pilhas.isEmptyPreto()) {
+                System.out.println("popPreto() -> " + pilhas.popPreto());
+            }
+        }
     }
 }

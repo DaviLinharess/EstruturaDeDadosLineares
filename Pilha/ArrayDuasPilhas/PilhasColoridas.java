@@ -33,7 +33,7 @@ public class PilhasColoridas {
     // POP
     public int popVermelho() {
         if (topoVermelho == -1) {
-            throw new PilhaVaziaExcecao("A Pilha está vazia.");
+            throw new PilhaVaziaExcecao("A Pilha vermelha está vazia.");
         }
         int valor = dados[topoVermelho];                // Vai retornar o valor que ESTAVA no topo, mas agora foi retirado 
         topoVermelho--;                                 // por isso o "valor = dados" veio antes do topoVermelho--;
@@ -46,7 +46,7 @@ public class PilhasColoridas {
 
     public int popPreto() {
         if (topoPreto == capacidade) {
-            throw new PilhaVaziaExcecao("A Pilha está vazia.");
+            throw new PilhaVaziaExcecao("A Pilha preta está vazia.");
         }
         int valor = dados[topoPreto];                // Vai retornar o valor que ESTAVA no topo, mas agora foi retirado
         topoPreto++;                                // por isso o "valor = dados" veio antes do topoPreto--;

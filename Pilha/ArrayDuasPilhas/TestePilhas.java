@@ -46,5 +46,18 @@ public class TestePilhas {
                 System.out.println("popPreto() -> " + pilhas.popPreto());
             }
         }
+
+        System.out.println("\n==== Teste 4: Exceções ====");
+        try {
+            pilhas.popVermelho(); // pilha vermelha já está vazia
+        } catch (PilhaVaziaExcecao e) {
+            System.out.println("Exceção capturada (vermelha): " + e.getMessage());
+        }
+
+        try {
+            pilhas.topPreto(); // pilha preta já está vazia
+        } catch (PilhaVaziaExcecao e) {
+            System.out.println("Exceção capturada (preta): " + e.getMessage());
+        }
     }
 }

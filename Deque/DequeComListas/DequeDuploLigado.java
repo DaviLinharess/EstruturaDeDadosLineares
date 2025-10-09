@@ -1,3 +1,5 @@
+// para remover no final, usando o pop back, o tempo é O(1), pois tem um ponteiro para o nó anterior
+// o restante das operações também são O(1)
 public class DequeDuplo {
     private static class Node {
         int valor;

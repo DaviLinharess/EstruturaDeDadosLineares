@@ -1,3 +1,6 @@
+// para remover no final, usando o pop back, o tempo é O(n), pois ele percorre até o penúltimo elemento
+// o restante das operações são O(1)
+
 public class DequeSimples {
     private static class Node {
         int valor;

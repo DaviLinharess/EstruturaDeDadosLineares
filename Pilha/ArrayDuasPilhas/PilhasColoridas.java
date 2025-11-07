@@ -59,33 +59,32 @@ public class PilhasColoridas {
 
     //RESIZE
     private void resize(int novaCapacidade) {
-        System.out.println(">> resize: " + capacidade + " -> " + novaCapacidade);
         int[] novo = new int[novaCapacidade];
         for (int i=0; i <= topoVermelho; i++) {                 // laço pra copiar a Pilha vermelha pro novo Array 
             novo[i] = dados[i];
         }
-        int elementosPretos = capacidade - topoPreto;           // quantos elementos pretos tem na pilha preta
-        int novoTopoPreto = novaCapacidade - elementosPretos;   //novo topo preto colocado no novo array
-        for (int i=0; i < elementosPretos; i++) {               // copiar a pilha preta pro novo array
+        int elementosPretos = capacidade - topoPreto;           
+        int novoTopoPreto = novaCapacidade - elementosPretos;   
+        for (int i=0; i < elementosPretos; i++) {               
             novo[novoTopoPreto + i] = dados[topoPreto + i];
         }
         topoPreto = novoTopoPreto;
-        capacidade = novaCapacidade;                            // atualiza os atributos
+        capacidade = novaCapacidade;                            
         dados = novo;
     }
 
     // OUTROS MÉTODOS
-    public boolean isEmptyVermelho() {                // verifica se está vazia
-        return topoVermelho == -1;                    // retorna true se topoVermelho == -1, se não, false
+    public boolean isEmptyVermelho() {                
+        return topoVermelho == -1;                    
     }
-    public boolean isEmptyPreto() {                   // verifica se está vazia
-        return topoPreto == capacidade;               // retorna true se topoPreto == capacidade, se não, false
+    public boolean isEmptyPreto() {                  
+        return topoPreto == capacidade;               
     }                                       
-   public int sizeVermelho () {                      // tamanho pilha vermelha
-        return topoVermelho + 1;                      // +1 pq o indice comeca em -1
+   public int sizeVermelho () {                      
+        return topoVermelho + 1;                     
     }
-    public int sizePreto () {                         // tamanho pilha preta
-        return capacidade - topoPreto;                // capacidade - topoPreto pq o indice comeca em capacidade
+    public int sizePreto () {                         
+        return capacidade - topoPreto;                
     }
     public int totalSize() {
         return sizeVermelho() + sizePreto();

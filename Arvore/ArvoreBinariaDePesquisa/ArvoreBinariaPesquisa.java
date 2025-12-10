@@ -147,4 +147,88 @@ public class ArvoreBinariaPesquisa {
             v.setPai(u.getPai());
         }
     }
+
+    public int profundidade(No v) {
+        if (isRaiz(v)) {
+            return 0;
+        } else {
+            return 1 + profundidade(v.getPai());
+        }
+    }
+
+    public int altura(No v) {
+        if (isExterno(v)) {
+            return 0;
+        }
+
+        int alturaEsquerda = 0;
+        int alturaDireita = 0;
+
+        if (v.getEsquerdo() != null) {
+            alturaEsquerda = altura(v.getEsquerdo());
+        }
+
+        if (v.getDireito() != null) {
+            alturaDireita = altura(v.getDireito());
+        }
+
+        return 1 + Math.max(alturaEsquerda, alturaDireita);
+    }
+
+    public int altura() {
+        if (raiz == null) {
+            return 0;
+        }
+        return altura(raiz);
+    }
+
+    public void inOrder() {
+        inOrder(raiz);
+        System.out.println(); // quebra de linha no final
+    }
+
+    private void inOrder(No v) {
+        if (v != null) {
+            inOrder(v.getEsquerdo());                 // esquerda
+            System.out.print(v.getElemento() + " "); // visita o nó
+            inOrder(v.getDireito());                  // direita
+        }
+    }
+
+
+    public void mostrarArvore() {
+        if (raiz == null) {
+            System.out.println("Árvore vazia.");
+            return;
+        }
+
+        int h = altura(); 
+
+        for (int i = 0; i <= h; i++) {
+            mostrarNivel(raiz, i, h - i);
+            System.out.println();
+        }
+    }
+
+    private void mostrarNivel(No v, int nivel, int espaco) {
+        if (v == null) {
+            printEspacos(espaco * 4);
+            System.out.print(" ");
+            return;
+        }
+
+        if (nivel == 0) {
+            printEspacos(espaco * 4);
+            System.out.print(v.getElemento());
+        } else {
+            mostrarNivel(v.getEsquerdo(), nivel - 1, espaco);
+            mostrarNivel(v.getDireito(), nivel - 1, espaco);
+        }
+    }
+
+    private void printEspacos(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print(" ");
+        }
+    }
 }
